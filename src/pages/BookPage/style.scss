@@ -1,0 +1,22 @@
+.book-page {
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    margin-top: 40px;
+    position: relative;
+
+    &__image {
+        margin-right: 40px;
+        width: 30%;
+    }
+
+    &__title {
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    &__wrapper {
+        width: 70%;
+    }
+}
