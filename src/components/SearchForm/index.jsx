@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Input, Space } from "antd";
 import "antd/dist/antd.css";
 import "./style.scss";
@@ -9,9 +9,9 @@ const { Search } = Input;
 function SearchForm() {
     const dispatch = useDispatch();
 
-    const onSearch = (value) => {
+    const onSearch = useCallback((value) => {
         dispatch(getData(value));
-    };
+    }, []);
 
     return (
         <div className="search-form">
