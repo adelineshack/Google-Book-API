@@ -1,13 +1,15 @@
+import { Button } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Error from "../../components/Errors";
 import { getBookData } from "../../redux/actions";
-// import Spinner from "../../components/Loader";
 import "./style.scss";
+import "antd/dist/antd.css";
 
 function BookPage() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     let { bookId } = useParams();
     const currentBook = useSelector(
         (state) => state?.store?.currentBook?.volumeInfo
@@ -20,7 +22,6 @@ function BookPage() {
 
     return (
         <div className="book-page">
-            {/* <Spinner /> */}
             {erorrMessage ? (
                 <Error responseMessage={erorrMessage} />
             ) : (
@@ -47,7 +48,6 @@ function BookPage() {
                         ></div>
 
                         <div className="book-shelf__categories">
-                            Категории:
                             {currentBook?.categories?.map((item, i) => (
                                 <div className="book-shelf__category" key={i}>
                                     {item}
@@ -62,6 +62,7 @@ function BookPage() {
                         >
                             Подробнее
                         </a>
+                        <Button onClick={() => navigate(-1)}>Назад</Button>
                     </div>
                 </>
             )}
